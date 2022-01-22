@@ -18,6 +18,7 @@ use App\Http\Controllers\TableController;
 */
 
 Route::get('/',[UserController::class, 'CheckAuthen'])->name('home');
+Route::resource('user', UserController::class);
 Route::group(['prefix'=>'user','as'=>'user.'], function() {
     Route::get('/login',[UserController::class, 'Login'])->name('login');
     Route::post('/login',[UserController::class, 'Authen'])->name('authen');
@@ -25,16 +26,18 @@ Route::group(['prefix'=>'user','as'=>'user.'], function() {
 });
 Route::group(['prefix'=>'store','as'=>'store.'], function() {
     Route::get('/',[StoreController::class, 'Main'])->name('main');
-    Route::group(['prefix'=>'request','as'=>'request.'], function() {
-        Route::get('/',[StoreController::class, 'ViewRequest'])->name('index');
-        Route::get('/{id}',[StoreController::class, 'ShowRequest'])->name('show');
-        Route::get('/create',[StoreController::class, 'NewRequest'])->name('create');
-        Route::get('/addfood/{foodId}',[StoreController::class, 'AddFood'])->name('addfood');
-        Route::post('/',[StoreController::class, 'SaveNewRequest'])->name('store');
-        Route::get('/{request}/edit',[StoreController::class, 'EditRequest'])->name('edit');
-        Route::put('/{request}',[StoreController::class, 'UpdateRequest'])->name('update');
-        Route::delete('/{request}',[StoreController::class, 'DeleteRequest'])->name('destroy');
-    });
+    // Route::group(['prefix'=>'request','as'=>'request.'], function() {
+    //     Route::get('/',[StoreController::class, 'ViewRequest'])->name('index');
+    //     Route::get('/{id}',[StoreController::class, 'ShowRequest'])->name('show');
+    //     Route::get('/create',[StoreController::class, 'NewRequest'])->name('create');
+    //     Route::get('/selecttable/{tableId}',[StoreController::class, 'SelectTable'])->name('selecttable');
+    //     Route::get('/addfood/{foodId}',[StoreController::class, 'AddFood'])->name('addfood');
+    //     Route::get('/checkout',[StoreController::class, 'SelectFood'])->name('selectfood');
+    //     Route::post('/',[StoreController::class, 'SaveNewRequest'])->name('store');
+    //     Route::get('/{request}/edit',[StoreController::class, 'EditRequest'])->name('edit');
+    //     Route::put('/{request}',[StoreController::class, 'UpdateRequest'])->name('update');
+    //     Route::delete('/{request}',[StoreController::class, 'DeleteRequest'])->name('destroy');
+    // });
     Route::resource('food', FoodController::class);
     Route::resource('table', TableController::class);
 });
