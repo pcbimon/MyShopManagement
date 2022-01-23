@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MyShop - @yield('title')</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/all.min.css') }}" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/all.min.css') }}"/>
 </head>
 
 <body>
@@ -64,6 +64,8 @@
     <div class="container">
         @yield('content')
     </div>
+    <script type="text/javascript" src="{{ asset('js/sbadmin.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
-<script type="text/javascript" src="{{ asset('js/sbadmin.js') }}"></script>
+
 </html>

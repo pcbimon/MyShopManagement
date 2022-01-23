@@ -13,7 +13,7 @@ use App\Http\Controllers\StoreController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home',[StoreController::class,'Home'])->name('home');
+Route::get('/',[StoreController::class,'Home'])->name('home');
 Route::get('/about',[StoreController::class,'About'])->name('about');
 Route::group(['prefix'=>'product','as'=>'product.'], function() {
     Route::get('/',function(){
