@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoreController;
-use App\Http\Controllers\FoodController;
-use App\Http\Controllers\TableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +13,8 @@ use App\Http\Controllers\TableController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function(){
-    return 'show all product';
-})->name('home');
-Route::get('/about',function(){
-    return 'About Shop';
-})->name('about');
+Route::get('/home',[StoreController::class,'Home'])->name('home');
+Route::get('/about',[StoreController::class,'About'])->name('about');
 Route::group(['prefix'=>'product','as'=>'product.'], function() {
     Route::get('/',function(){
         return 'All Product';
