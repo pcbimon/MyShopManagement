@@ -21,17 +21,17 @@
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="{{route('home')}}">หน้าหลัก
+                <a class="nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}" href="{{route('home')}}">หน้าหลัก
                   <span class="visually-hidden">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('product.index')}}">สินค้า
+                <a class="nav-link {{ is_int((strpos(Route::currentRouteName(), 'product'))) ? 'active' : '' }}" href="{{route('product.index')}}">สินค้า
                   <span class="visually-hidden">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('about')}}">เกี่ยวกับ</a>
+                <a class="nav-link {{ Route::currentRouteNamed('about') ? 'active' : '' }}" href="{{route('about')}}">เกี่ยวกับ</a>
               </li>
             </ul>
             <div class="d-flex">
