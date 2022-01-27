@@ -11,7 +11,7 @@
         <link href="{{ asset('libs/font-awesome/css/all.min.css') }}" rel="stylesheet" />
         <script src="{{ asset('libs/font-awesome/js/all.min.js') }}" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-light">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>

@@ -11,6 +11,10 @@
                         <label for="productname">ชื่อผลิตภัณฑ์</label>
                     </div>
                     <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="price" name="price" placeholder="ราคา">
+                        <label for="price">ราคา</label>
+                    </div>
+                    <div class="form-floating mb-3">
                         <textarea class="form-control" placeholder="คำอธิบายผลิตภัณฑ์" id="productdesc"
                             style="height: 100px"></textarea>
                         <label for="productdesc">คำอธิบายผลิตภัณฑ์</label>

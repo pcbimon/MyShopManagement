@@ -7,11 +7,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="productname" placeholder="ชื่อผลิตภัณฑ์">
+                        <input type="text" class="form-control" id="productname" name="productname" placeholder="ชื่อผลิตภัณฑ์">
                         <label for="productname">ชื่อผลิตภัณฑ์</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="คำอธิบายผลิตภัณฑ์" id="productdesc"
+                        <input type="number" class="form-control" id="price" name="price" placeholder="ราคา">
+                        <label for="price">ราคา</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="คำอธิบายผลิตภัณฑ์" id="productdesc" name="productdesc"
                             style="height: 100px"></textarea>
                         <label for="productdesc">คำอธิบายผลิตภัณฑ์</label>
                     </div>
