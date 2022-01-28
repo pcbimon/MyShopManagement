@@ -4,36 +4,73 @@
     <div class="card mt-3">
         <h5 class="card-header">สร้างผลิตภัณฑ์ใหม่</h5>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="productname" name="productname" placeholder="ชื่อผลิตภัณฑ์">
-                        <label for="productname">ชื่อผลิตภัณฑ์</label>
+            <form action="{{ route('product.store') }}" method="POST">
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="price" name="price" placeholder="ราคา">
-                        <label for="price">ราคา</label>
+                @endif --}}
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control @error('productname') is-invalid @enderror" id="productname" name="productname"
+                                placeholder="ชื่อผลิตภัณฑ์" value="{{old('productname')}}">
+                            <label for="productname">ชื่อผลิตภัณฑ์</label>
+                            <span class="text-danger">
+                                @error('productname')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" placeholder="ราคา" value="{{old('price')}}">
+                            <label for="price">ราคา</label>
+                            <span class="text-danger">
+                                @error('price')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control @error('productdesc') is-invalid @enderror" placeholder="คำอธิบายผลิตภัณฑ์" id="productdesc"
+                                name="productdesc" style="height: 100px">{{old('productdesc')}}</textarea>
+                            <label for="productdesc">คำอธิบายผลิตภัณฑ์</label>
+                            <span class="text-danger">
+                                @error('productdesc')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fileUpload" class="form-label">รูปตัวอย่าง</label>
+                            <input class="form-control @error('fileUpload') is-invalid @enderror" type="file" id="fileUpload" name="fileUpload">
+                            <span class="text-danger">
+                                @error('fileUpload')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
                     </div>
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="คำอธิบายผลิตภัณฑ์" id="productdesc" name="productdesc"
-                            style="height: 100px"></textarea>
-                        <label for="productdesc">คำอธิบายผลิตภัณฑ์</label>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">รูปตัวอย่าง</label>
-                        <input class="form-control" type="file" id="formFile">
+                    <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <img src="https://via.placeholder.com/300x300?text=Example+Image" class="h-100" alt="...">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/300x300?text=Example+Image" class="h-100" alt="...">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-3 d-grid">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> บันทึก</button>
+                        </div>
+                        <div class="col-md-3 d-grid">
+                            <a href="{{ route('product.index') }}" class="btn btn-light"><i class="fas fa-arrow-left"></i> ยกเลิก</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-success">บันทึก</button>
-                    <a href="{{ route('product.index') }}" class="btn btn-default">ยกเลิก</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 @stop
