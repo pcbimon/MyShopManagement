@@ -38,8 +38,17 @@ class ProductController extends Controller
         $product->productName = $request->productname;
         $product->productDesc = $request->productdesc;
         $product->price = $request->price;
-        $product->fileUpload = "";
         $product->save();
+        //update file
+        if ($request->hasFile('fileUpload')) {
+            $file = $request->file('fileUpload');
+            $path = Storage::putFileAs('public', $file,$product->id.'.'.$file->extension());
+            $path = str_replace("public","",$path);
+            $product = Product::find($product->id);
+            $product->fileUpload = $path;
+            $product->save();
+        }
+
         return redirect()->route('product.index');
     }
     public function Edit($id)
@@ -63,7 +72,7 @@ class ProductController extends Controller
             'price.required'  => 'กรุณากรอกราคา',
         ];
         //update file
-        $path = "";
+        $path = null;
         if ($request->hasFile('fileUpload')) {
             $file = $request->file('fileUpload');
             // $path = Storage::putFile('public', $file);

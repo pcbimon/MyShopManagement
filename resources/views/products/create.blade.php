@@ -4,7 +4,7 @@
     <div class="card mt-3">
         <h5 class="card-header">สร้างผลิตภัณฑ์ใหม่</h5>
         <div class="card-body">
-            <form action="{{ route('product.store') }}" method="POST">
+            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

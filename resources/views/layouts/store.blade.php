@@ -9,6 +9,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/all.min.css') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Mitr&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/b-2.2.2/datatables.min.css"/>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}" href="{{route('home')}}">หน้าหลัก</a>
+                <a class="nav-link {{ Route::currentRouteNamed('home')||Route::currentRouteNamed('showall')  ? 'active' : '' }}" href="{{route('home')}}">หน้าหลัก</a>
               </li>
               @auth
               <li class="nav-item">
@@ -73,6 +74,9 @@
     </div>
     <script type="text/javascript" src="{{ asset('js/sbadmin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/b-2.2.2/datatables.min.js"></script>
+    @yield('javascript')
 </body>
 
 </html>

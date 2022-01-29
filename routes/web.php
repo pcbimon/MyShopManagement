@@ -17,6 +17,7 @@ use App\Http\Controllers\UserController;
 */
 Route::get('/',[StoreController::class,'Home'])->name('home');
 Route::get('/about',[StoreController::class,'About'])->name('about');
+Route::get('/showall',[StoreController::class,'ShowAll'])->name('showall');
 Route::group(['prefix'=>'product','as'=>'product.'], function() {
     // Route::get('/',function(){
     //     return 'View All Product';

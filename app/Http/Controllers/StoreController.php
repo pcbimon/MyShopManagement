@@ -9,11 +9,16 @@ class StoreController extends Controller
 {
     public function Home()
     {
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'desc')->limit(7)->get();
         return view('home',['products'=>$products]);
     }
     public function About()
     {
         return view('about');
+    }
+    public function ShowAll()
+    {
+        $products = Product::all();
+        return view('showall',['products'=>$products]);
     }
 }

@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('productName',50);
             $table->text('productDesc');
-            $table->text('fileUpload');
+            $table->string('fileUpload')->nullable();
             $table->timestamps();
         });
     }
