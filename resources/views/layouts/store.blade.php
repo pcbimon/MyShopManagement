@@ -8,9 +8,15 @@
     <title>MyShop - @yield('title')</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/all.min.css') }}"/>
+    <link href="https://fonts.googleapis.com/css?family=Mitr&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <style>
+        body {
+      font-family: 'Mitr', sans-serif !important;
+    }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
           <a class="navbar-brand" href="{{route('home')}}">My Shop</a>
@@ -23,12 +29,14 @@
               <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}" href="{{route('home')}}">หน้าหลัก</a>
               </li>
+              @auth
               <li class="nav-item">
                 <a class="nav-link {{ is_int((strpos(Route::currentRouteName(), 'product'))) ? 'active' : '' }}" href="{{route('product.index')}}">สินค้า</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {{ is_int((strpos(Route::currentRouteName(), 'user'))) ? 'active' : '' }}" href="{{route('user.index')}}">ผู้ใช้งาน</a>
               </li>
+              @endauth
               <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('about') ? 'active' : '' }}" href="{{route('about')}}">เกี่ยวกับ</a>
               </li>

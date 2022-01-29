@@ -2,7 +2,7 @@
 @section('title', 'Products')
 @section('content')
 <div class="mt-3 d-flex justify-content-between">
-    <div><label class="h5">รายการผู้ใช้งาน ทั้งหมด XXX รายการ</label></div>
+    <div><label class="h5">รายการผู้ใช้งาน ทั้งหมด {{count($users)}} รายการ</label></div>
     <div><a class="btn btn-primary text-end" href="{{route('user.create')}}">เพิ่มใหม่</a></div>
 </div>
 <div class="row mt-3">
@@ -17,46 +17,16 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($users as $user)
               <tr>
-                <th>1</th>
-                <td>ผู้ใช้งาน 1</td>
-                <td>xxx@mail.com</td>
+                <th>{{$loop->index+1}}</th>
+                <td>{{$user->firstname}} {{$user->lastname}}</td>
+                <td>{{$user->email}}</td>
                 <td>
-                    <a href="{{route('user.edit',[1])}}" class="btn btn-info"><i class="fas fa-edit"></i> แก้ไข</a>
+                    <a href="{{route('user.edit',[$user->id])}}" class="btn btn-info"><i class="fas fa-edit"></i> แก้ไข</a>
                 </td>
               </tr>
-              <tr>
-                <th>2</th>
-                <td>ผู้ใช้งาน 1</td>
-                <td>xxx@mail.com</td>
-                <td>
-                    <a href="{{route('user.edit',[2])}}" class="btn btn-info"><i class="fas fa-edit"></i> แก้ไข</a>
-                </td>
-              </tr>
-              <tr>
-                <th>3</th>
-                <td>ผู้ใช้งาน 1</td>
-                <td>xxx@mail.com</td>
-                <td>
-                    <a href="{{route('user.edit',[3])}}" class="btn btn-info"><i class="fas fa-edit"></i> แก้ไข</a>
-                </td>
-              </tr>
-              <tr>
-                <th>4</th>
-                <td>ผู้ใช้งาน 1</td>
-                <td>xxx@mail.com</td>
-                <td>
-                    <a href="{{route('user.edit',[4])}}" class="btn btn-info"><i class="fas fa-edit"></i> แก้ไข</a>
-                </td>
-              </tr>
-              <tr>
-                <th>5</th>
-                <td>ผู้ใช้งาน 1</td>
-                <td>xxx@mail.com</td>
-                <td>
-                    <a href="{{route('user.edit',[5])}}" class="btn btn-info"><i class="fas fa-edit"></i> แก้ไข</a>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
     </div>

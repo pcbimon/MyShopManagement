@@ -40,7 +40,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="fileUpload" class="form-label">รูปตัวอย่าง</label>
-                            <input class="form-control @error('fileUpload') is-invalid @enderror" type="file" id="fileUpload" name="fileUpload" accept="image/png, image/jpeg" >
+                            <input onchange="preview_image(event)" class="form-control @error('fileUpload') is-invalid @enderror" type="file" id="fileUpload" name="fileUpload" accept="image/png, image/jpeg" >
                             <span class="text-danger">
                                 @error('fileUpload')
                                     {{ $message }}
@@ -50,9 +50,9 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-self-center">
                         @if ($product->fileUpload == null)
-                            <img src="https://via.placeholder.com/300x300?text=Example+Image" class="h-100" alt="...">
+                            <img id="previewImage" src="https://via.placeholder.com/300x300?text=Example+Image" width="300" height="300">
                         @else
-                            <img src="{{asset('/storage/'.$product->fileUpload)}}" height="300px" alt="...">
+                            <img id="previewImage" src="{{asset('/storage/'.$product->fileUpload)}}" width="300" height="300">
                         @endif
 
                     </div>
@@ -79,4 +79,14 @@
             </div>
         </div>
     </div>
+    <script>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('previewImage');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 @stop
