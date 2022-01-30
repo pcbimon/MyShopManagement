@@ -15,8 +15,8 @@
 <body>
     <style>
         body {
-      font-family: 'Mitr', sans-serif !important;
-    }
+            font-family: 'Mitr', sans-serif !important;
+        }
     </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
